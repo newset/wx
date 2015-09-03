@@ -1,4 +1,4 @@
-angular.module('wx', ['ui.router', 'ngCookies'])
+angular.module('wx', ['ui.router', 'ngCookies', 'ngSanitize'])
 	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 		$stateProvider
 			.state('home', {

@@ -1,4 +1,28 @@
 angular.module('wx')
+	.factory('Tags', ['$http', '$q', '$timeout', function ($http, $q, $timeout) {
+		var cache = [];
+		return {
+			all : function(){
+				var defer = $q.defer();
+
+				if (cache.length) {
+					$timeout(function(){
+						defer.resolve(cache);
+					}, 0);
+					return defer.promise;
+				}else{
+					$http.get(baseUrl + '/api/tags').success(function(res){
+						cache = res;
+						defer.resolve(cache);
+					})
+					.error(function(){
+						defer.reject(cache, 'error');
+					});
+					return defer.promise;
+				};
+			}
+		};
+	}])
 	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 		$stateProvider
 			.state('articles', {
@@ -73,7 +97,10 @@ angular.module('wx')
 		$scope.tags = Tags.data;
 
 	}])
-	.controller('ShowWeixin', ['$scope', 'Request', '$state', 'Weixin', function ($scope, Request, $state, Weixin) {
+	.controller('ShowWeixin', ['$scope', 'Request', '$state', 'Weixin', 'Tags', function ($scope, Request, $state, Weixin, Tags) {
 		$scope.weixin = Weixin.data;
-
+		$scope.tagMarked = [];
+		Tags.all().then(function(data){
+			$scope.tags = data;
+		})
 	}]);

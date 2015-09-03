@@ -10,6 +10,6 @@ class Tags extends Controller
 {
 	public function getIndex()
 	{
-		return Tag::paginate();
+		return Tag::all();
 	}
 }

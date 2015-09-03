@@ -172,6 +172,7 @@
 
         <script src="{{asset('vendors/angular/angular.js')}}"></script>
         <script src="{{asset('vendors/angular-cookies/angular-cookies.js')}}"></script>
+        <script src="{{asset('vendors/angular-sanitize/angular-sanitize.js')}}"></script>
         <script src="{{asset('vendors/angular-ui-router/release/angular-ui-router.js')}}"></script>
         <script src="http://cdn.bootcss.com/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.js"></script>
 
