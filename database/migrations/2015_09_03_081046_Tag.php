@@ -14,13 +14,13 @@ class Tag extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->integer('count')->default(0);
         });
 
         Schema::create('user_marked', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_id');
+            $table->string('user_id')->unique();
             $table->integer('count')->default(0);
         });
     }

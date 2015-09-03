@@ -27,4 +27,5 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::group(['middleware'=>'auth', 'prefix' => 'api', 'namespace'=> 'API'], function(){
 	Route::controller('articles', 'ArticleCtrl');
 	Route::controller('weixins', 'WeixinCtrl');
+	Route::controller('tags', 'Tags');
 });

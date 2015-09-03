@@ -26,6 +26,9 @@ angular.module('wx', ['ui.router', 'ngCookies'])
 			},
 			weixins : function(){
 				return $http.get(baseUrl + '/api/weixins');
+			},
+			tags : function(){
+				return $http.get(baseUrl + '/api/tags');
 			}
 		};
 	}]);

@@ -24,6 +24,18 @@ angular.module('wx')
 						});
 					}]
 				}
+			})
+			.state('tags', {
+				url : '/tags/:page',
+				templateUrl : 'templates/tags.html',
+				controller : 'Tags',
+				resolve : {
+					'Tags' : ['Request', '$stateParams', function(Request, $stateParams){
+						return Request.tags().success(function(res){
+							return res;
+						});
+					}]
+				}
 			});
 
 		$urlRouterProvider.otherwise('/');
@@ -39,3 +51,8 @@ angular.module('wx')
 		$scope.weixins = Weixins.data;
 
 	}])
+	.controller('Tags', ['$scope', 'Request', '$state', 'Tags', function ($scope, Request, $state, Tags) {
+		$scope.page = 1;
+		$scope.tags = Tags.data;
+
+	}]);

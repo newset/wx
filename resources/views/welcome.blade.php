@@ -92,7 +92,7 @@
                             <li ng-class="{'active' : $state.includes('home')}"><a ui-sref="home"><i class="md md-home"></i>首页</a></li>
                             <li ng-class="{'active' : $state.includes('articles')}"><a ui-sref="articles"><i class="md md-format-underline"></i>文章</a></li>
                             <li ng-class="{'active' : $state.includes('weixins')}"><a ui-sref="weixins"><i class="md md-today"></i>公众号</a></li>
-                            <!-- <li ng-class="{'active' : $state.includes('datas')}"><a ui-sref="articles"><i class="md md-timer"></i>统计</a></li> -->
+                            <li ng-class="{'active' : $state.includes('tags')}"><a ui-sref="tags"><i class="md md-timer"></i>标签</a></li>
                         </ul>
                     </div>
                 </div>

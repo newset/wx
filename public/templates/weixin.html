@@ -8,7 +8,7 @@
                 <a class="lv-item" href="" ng-repeat="item in weixins.data">
                     <div class="media">
                         <div class="pull-left">
-                            <img class="lv-img-sm" src="img/profile-pics/{{$index%8+1}}.jpg" alt="">
+                            <img class="lv-img-sm" ng-src="img/profile-pics/{{$index%8+1}}.jpg" alt="">
                         </div>
                         <div class="media-body">
                             <div class="lv-title">{{item.name}}</div>
