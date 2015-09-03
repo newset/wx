@@ -52,6 +52,13 @@ class WeixinCtrl extends Controller
 	{	
 		$user_id =$req->user()->id;
 		$data = $req->input();
+
+		// 判断当前 weixin是否由登录用户标记
+		$weixin = DB::table('user_marked')->where(['user_id'=>$user_id, 'weixin_id'=>$data['id']])->first();
+		if (!$weixin) {
+			return ['error'=>'无操作权限', 'code'=>1];
+		}
+
 		DB::table('weixin_tags')->where('weixin_tag_id', $data['id'])->delete();
 
 		$tags = $data['tags'];
@@ -60,7 +67,6 @@ class WeixinCtrl extends Controller
 			$item = ['weixin_tag_id'=> $data['id'], 'tag_id'=>$tags[$i], 'weixin_tag_type'=>'App\Weixin'];
 			array_push($insert, $item);
 		}
-
 		DB::table('weixin_tags')->insert($insert);
 
 		// 获取下一个

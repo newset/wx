@@ -64,7 +64,7 @@ angular.module('wx')
 				templateUrl : 'templates/weixin-one.html',
 				controller : 'ShowWeixin',
 				resolve : {
-					'Weixin' : ['Request', '$stateParams', '$q', function(Request, $stateParams, $q){
+					'Weixin' : ['Request', '$stateParams', '$q', '$state', function(Request, $stateParams, $q, $state){
 						var defer = $q.defer();
 
 						Request.getWeixin($stateParams.id)
@@ -74,6 +74,7 @@ angular.module('wx')
 						.error(function(res){
 							notify(res.error, 'danger');
 							defer.reject(res);
+							$state.go('weixins.index');
 						});
 
 						return defer.promise;
