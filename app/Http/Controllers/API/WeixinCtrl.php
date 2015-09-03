@@ -51,8 +51,22 @@ class WeixinCtrl extends Controller
 	public function postMark(Request $req)
 	{	
 		$user_id =$req->user()->id;
+		$data = $req->input();
+		DB::table('weixin_tags')->where('weixin_tag_id', $data['id'])->delete();
 
-		return $req->input();
+		$tags = $data['tags'];
+		$insert = [];
+		for ($i=0; $i < count($tags); $i++) { 
+			$item = ['weixin_tag_id'=> $data['id'], 'tag_id'=>$tags[$i], 'weixin_tag_type'=>'App\Weixin'];
+			array_push($insert, $item);
+		}
+
+		DB::table('weixin_tags')->insert($insert);
+
+		// 获取下一个
+		// ->whereNotIn('id', [1, 2, 3]);
+
+		return ['code'=>0];
 	}
 
 	private function getNext()

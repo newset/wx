@@ -16,7 +16,11 @@
         <!-- CSS -->
         <link href="css/app.min.1.css" rel="stylesheet">
         <link href="css/app.min.2.css" rel="stylesheet">
-        
+        <style type="text/css">
+            html,body{
+                height: 100%;
+            }
+        </style>
     </head>
     <body class="toggled sw-toggled">
         <header id="header">
@@ -30,7 +34,7 @@
                 </li>
             
                 <li class="logo hidden-xs">
-                    <a href="index.html">Material Admin</a>
+                    <a href="#/">Material Admin</a>
                 </li>
                 
                 <li class="pull-right">

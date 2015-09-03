@@ -1,4 +1,9 @@
 angular.module('wx')
+	.run(['$rootScope', function ($rootScope) {
+		$rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
+			
+		})
+	}])
 	.factory('Tags', ['$http', '$q', '$timeout', function ($http, $q, $timeout) {
 		var cache = [];
 		return {
@@ -66,17 +71,13 @@ angular.module('wx')
 						.success(function(res){
 							defer.resolve(res);
 						})
-						.error(function(req){
-							console.log(req);
-							defer.resolve(req);
+						.error(function(res){
+							notify(res.error, 'danger');
+							defer.reject(res);
 						});
 
 						return defer.promise;
 					}]
-				},
-				onEnter : function(Weixin){
-					console.log('enter', Weixin);
-					return false;
 				}
 			})
 			.state('tags', {
@@ -97,7 +98,6 @@ angular.module('wx')
 	.controller('Article', ['$scope', 'Request', 'Articles', '$state', function ($scope, Request, Articles, $state) {
 		$scope.articles = Articles.data;
 		$scope.page = 1;
-
 
 	}])
 	.controller('Weixin', ['$scope', 'Request', '$state', 'Weixins', function ($scope, Request, $state, Weixins) {
@@ -149,4 +149,10 @@ angular.module('wx')
 
 			});
 		}
+	}])
+	.controller('TagsCtrl', ['$scope', 'Tags', function ($scope, Tags) {
+		Tags.all().then(function(data){
+			// 显示已标注
+			$scope.tags = data;
+		})
 	}]);
