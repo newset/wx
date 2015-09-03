@@ -59,11 +59,24 @@ angular.module('wx')
 				templateUrl : 'templates/weixin-one.html',
 				controller : 'ShowWeixin',
 				resolve : {
-					'Weixin' : ['Request', '$stateParams', function(Request, $stateParams){
-						return Request.getWeixin($stateParams.id).success(function(res){
-							return res;
+					'Weixin' : ['Request', '$stateParams', '$q', function(Request, $stateParams, $q){
+						var defer = $q.defer();
+
+						Request.getWeixin($stateParams.id)
+						.success(function(res){
+							defer.resolve(res);
+						})
+						.error(function(req){
+							console.log(req);
+							defer.resolve(req);
 						});
+
+						return defer.promise;
 					}]
+				},
+				onEnter : function(Weixin){
+					console.log('enter', Weixin);
+					return false;
 				}
 			})
 			.state('tags', {
@@ -98,7 +111,7 @@ angular.module('wx')
 
 	}])
 	.controller('ShowWeixin', ['$scope', 'Request', '$state', 'Weixin', 'Tags', function ($scope, Request, $state, Weixin, Tags) {
-		$scope.weixin = Weixin.data;
+		$scope.weixin = Weixin;
 		$scope.tagMarked = [];
 		$scope.tagMarkedIds = [];
 
@@ -128,7 +141,8 @@ angular.module('wx')
 				return v.id;
 			});
 
-			Request.mark($scope.weixin.id, data).success(function(res){
+			Request.mark($scope.weixin.id, data)
+			.success(function(res){
 
 			})
 			.error(function(){
