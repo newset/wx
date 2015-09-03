@@ -3,7 +3,8 @@ angular.module('wx', ['ui.router', 'ngCookies', 'ngSanitize'])
 		$stateProvider
 			.state('home', {
 				url : '/',
-				templateUrl : 'templates/index.html'
+				templateUrl : 'templates/index.html',
+				controller : 'Home'
 			});
 	}])
 	.run(['$rootScope', '$cookies', '$http', '$state', function ($rootScope, $cookies, $http, $state) {
@@ -30,6 +31,9 @@ angular.module('wx', ['ui.router', 'ngCookies', 'ngSanitize'])
 			getWeixin : function(id){
 				return $http.get(baseUrl + '/api/weixins/show/'+ id);
 			},
+			get_weixin : function(){
+				return $http.get(baseUrl + '/api/weixins/next');
+			},
 			tags : function(){
 				return $http.get(baseUrl + '/api/tags');
 			},
@@ -38,6 +42,15 @@ angular.module('wx', ['ui.router', 'ngCookies', 'ngSanitize'])
 					'id' : weixin,
 					'tags' : tags
 				});
+			},
+			dash : function(){
+				return $http.get(baseUrl + '/api/dash');
 			}
 		};
+	}])
+	.controller('Home', ['$scope', 'Request', function($scope, Request){
+		$scope.dash = {};
+		Request.dash().success(function(res){
+			$scope.dash = res;
+		});
 	}]);

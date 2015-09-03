@@ -28,4 +28,6 @@ Route::group(['middleware'=>'auth', 'prefix' => 'api', 'namespace'=> 'API'], fun
 	Route::controller('articles', 'ArticleCtrl');
 	Route::controller('weixins', 'WeixinCtrl');
 	Route::controller('tags', 'Tags');
+
+	Route::controller('dash', 'Data');
 });

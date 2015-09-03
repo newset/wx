@@ -1,10 +1,21 @@
 <div class="card">
 	<div class="card-header">
 		<h2>标签</h2>
+		
 	</div>
 	<div class="card-body card-padding">
 		<div class="t-view b-0">
 		    <span class="btn btn-success m-r-10 m-b-10" ng-repeat="tag in tags" >{{tag.name}}</span>
 		</div>
+
+		<div class="fileinput fileinput-new" data-provides="fileinput">
+            <span class="btn btn-primary btn-file m-r-10">
+                <span class="fileinput-new">导入新标签</span>
+                <span class="fileinput-exists">Change</span>
+                <input type="file" name="...">
+            </span>
+            <span class="fileinput-filename"></span>
+            <a href="#" class="close fileinput-exists" data-dismiss="fileinput">&times;</a>
+        </div>
 	</div>
 </div>

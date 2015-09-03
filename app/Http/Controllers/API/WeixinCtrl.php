@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\User;
 use App\Weixin;
 use DB;
+use Session;
+use App\Jobs\MarkWeixin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -20,46 +22,13 @@ class WeixinCtrl extends Controller
 	public function getShow(Request $request, $id)
 	{
 		// 获取未标记公众号
-		$user_id = $request->user()->id;
-		$valid = false;
-		DB::transaction(function () use($user_id, $id, &$valid) {
-			$condition = [
-				'weixin_id' => $id
-			];
-
-			$row = DB::table('user_marked')->where($condition)->first();
-
-			if ($row) {
-				if ( $row->user_id == $user_id) {
-					$valid = true;
-				}
-			}else{
-				$condition['user_id'] = $user_id;
-				DB::table('user_marked')->insert($condition);
-				$valid = true;
-			}
-		});
-
-		if ($valid) {
-			return Weixin::with(['articles', 'tags'])->find($id);
-		}else{
-			return response(['error'=> '已有其他用户标记该公众号'], 400);
-		}
-		
+		return Weixin::with(['articles', 'tags'])->find($id);
 	}
 
 	public function postMark(Request $req)
 	{	
-		$user_id =$req->user()->id;
+		$user =$req->user();
 		$data = $req->input();
-
-		// 判断当前 weixin是否由登录用户标记
-		$weixin = DB::table('user_marked')->where(['user_id'=>$user_id, 'weixin_id'=>$data['id']])->first();
-		if (!$weixin) {
-			return ['error'=>'无操作权限', 'code'=>1];
-		}
-
-		DB::table('weixin_tags')->where('weixin_tag_id', $data['id'])->delete();
 
 		$tags = $data['tags'];
 		$insert = [];
@@ -67,16 +36,50 @@ class WeixinCtrl extends Controller
 			$item = ['weixin_tag_id'=> $data['id'], 'tag_id'=>$tags[$i], 'weixin_tag_type'=>'App\Weixin'];
 			array_push($insert, $item);
 		}
-		DB::table('weixin_tags')->insert($insert);
+
+		DB::transaction(function() use ($insert, $data, $user){
+			DB::table('weixin_tags')->where('weixin_tag_id', $data['id'])->delete();
+			DB::table('weixin_tags')->insert($insert);
+			DB::table('user_marked')->insert(['user_id'=>$user->id, 'weixin_id'=>$data['id'], 'valid'=>1]);
+
+			// update
+			Weixin::where('id', $data['id'])->update(['marking'=> 1]);
+		});
 
 		// 获取下一个
-		// ->whereNotIn('id', [1, 2, 3]);
+		$next = $this->next($user->last_wx);
+		$user->last_wx = $next->id;
+		$user->save();
 
-		return ['code'=>0];
+		return ['code'=>0, 'next'=>$next];
 	}
 
-	private function getNext()
-	{
+	public function getNext(Request $req)
+	{	
+		$user = $req->user();
+		$weixin = $this->next($user->last_wx);
+		if($user->last_wx != $weixin->id){
+			$user->last_wx = $weixin->id;
+			$user->save();
+		}
 
+		return $weixin;
+	}
+
+	private function next($last)
+	{
+		$next = null;
+		if ($last) {
+			$row = Weixin::with(['articles', 'tags'])->where('marking', 0)->find($last);
+			if($row) return $row;
+		}
+
+		DB::transaction(function() use(&$next){
+			$next = Weixin::with(['articles', 'tags'])->whereNull('marking')->first();
+			$next->marking = 0;
+			$next->save();
+		});
+
+		return $next;
 	}
 }

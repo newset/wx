@@ -105,6 +105,10 @@ angular.module('wx')
 		$scope.page = 1;
 		$scope.weixins = Weixins.data;
 
+		// 获取可以操作的公众号
+		Request.get_weixin().success(function(res){
+			$state.go('weixins.show', {id : res.id});
+		});
 	}])
 	.controller('Tags', ['$scope', 'Request', '$state', 'Tags', function ($scope, Request, $state, Tags) {
 		$scope.page = 1;
@@ -144,7 +148,9 @@ angular.module('wx')
 
 			Request.mark($scope.weixin.id, data)
 			.success(function(res){
-
+				if (res.code == 0) {
+					$state.go('weixins.show', {'id' : res.next.id}, {'reload': true});
+				};
 			})
 			.error(function(){
 
@@ -155,5 +161,7 @@ angular.module('wx')
 		Tags.all().then(function(data){
 			// 显示已标注
 			$scope.tags = data;
-		})
+		});
+
+		// 导入文件
 	}]);
