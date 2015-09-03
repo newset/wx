@@ -100,7 +100,18 @@ angular.module('wx')
 	.controller('ShowWeixin', ['$scope', 'Request', '$state', 'Weixin', 'Tags', function ($scope, Request, $state, Weixin, Tags) {
 		$scope.weixin = Weixin.data;
 		$scope.tagMarked = [];
+
 		Tags.all().then(function(data){
+			// 显示已标注
 			$scope.tags = data;
 		})
+
+		$scope.mark = function(tag){
+			if($scope.tagMarked.indexOf(tag) != -1) return;
+			$scope.tagMarked.push(tag);
+		}
+
+		$scope.remove = function(index){
+			$scope.tagMarked.splice(index, 1);
+		}
 	}]);
