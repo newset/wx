@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-header">
+        <h2>微信公众号</h2>
+    </div>
+    <div class="card-body card-padding">
+        <div class="listview">
+            <div class="lv-body">
+                <a class="lv-item" href="" ng-repeat="item in weixins.data">
+                    <div class="media">
+                        <div class="pull-left">
+                            <img class="lv-img-sm" src="img/profile-pics/{{$index%8+1}}.jpg" alt="">
+                        </div>
+                        <div class="media-body">
+                            <div class="lv-title">{{item.name}}</div>
+                            <small class="lv-small">{{item.intro}}</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <a class="lv-footer" href="">View All</a>
+        </div>
+    </div>
+</div>
