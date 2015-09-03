@@ -46,6 +46,10 @@ class WeixinCtrl extends Controller
 			Weixin::where('id', $data['id'])->update(['marking'=> 1]);
 		});
 
+		// 更新统计
+		$unmarked = Session::get('unmarked_wx_count');
+		Session::set('unmarked_wx_count', $unmarked-1);
+
 		// 获取下一个
 		$next = $this->next($user->last_wx);
 		$user->last_wx = $next->id;

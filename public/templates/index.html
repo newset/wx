@@ -9,8 +9,8 @@
                 <div class="clearfix">
                     <div class="chart stats-bar"></div>
                     <div class="count">
-                        <small>已添加标签</small>
-                        <h2 ng-bind="dash.marked"></h2>
+                        <small>我标记的个数</small>
+                        <h2 ng-bind="dash.me"></h2>
                     </div>
                 </div>
             </div>
@@ -21,8 +21,8 @@
                 <div class="clearfix">
                     <div class="chart stats-bar-2"></div>
                     <div class="count">
-                        <small>Website Impressions</small>
-                        <h2>356,785K</h2>
+                        <small>所有公众号</small>
+                        <h2 ng-bind="dash.total"></h2>
                     </div>
                 </div>
             </div>
@@ -33,8 +33,8 @@
                 <div class="clearfix">
                     <div class="chart stats-line"></div>
                     <div class="count">
-                        <small>Total Sales</small>
-                        <h2>$ 458,778</h2>
+                        <small>未标记个数</small>
+                        <h2 ng-bind="dash.unmarked"></h2>
                     </div>
                 </div>
             </div>
@@ -45,8 +45,8 @@
                 <div class="clearfix">
                     <div class="chart stats-line-2"></div>
                     <div class="count">
-                        <small>Support Tickets</small>
-                        <h2>23,856</h2>
+                        <small>正在处理</small>
+                        <h2 ng-bind="dash.pending"></h2>
                     </div>
                 </div>
             </div>

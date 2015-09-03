@@ -84,14 +84,7 @@ angular.module('wx')
 			.state('tags', {
 				url : '/tags/:page',
 				templateUrl : 'templates/tags.html',
-				controller : 'Tags',
-				resolve : {
-					'Tags' : ['Request', '$stateParams', function(Request, $stateParams){
-						return Request.tags().success(function(res){
-							return res;
-						});
-					}]
-				}
+				controller : 'TagsCtrl'
 			});
 
 		$urlRouterProvider.otherwise('/');
@@ -164,4 +157,16 @@ angular.module('wx')
 		});
 
 		// 导入文件
+		$scope.import = function(){
+			alert($('.fileinput-filename').text());
+			$.ajaxFileUpload({
+				'url': 'api/dash/tag', 
+				fileElementId: 'tagFileInput',
+				dataType: "json", 
+				success: function(res) {
+	            },
+	            error: function(res) {
+            	}
+        	});
+		}
 	}]);
