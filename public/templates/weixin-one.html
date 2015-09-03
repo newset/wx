@@ -30,7 +30,7 @@
 				<button type="button" class="btn btn-primary btn-block" ng-click="confirm()">确认选择并显示下一个</button>
 
 				<div class="m-t-20 p-t-10 p-b-10">
-					<span class="btn btn-success m-r-10" ng-disabled="tagMarked.indexOf(tag) != -1" ng-repeat="tag in tags" ng-click="mark(tag)">{{tag.name}}</span>
+					<span class="btn btn-success m-r-10" ng-disabled="tagMarkedIds.indexOf(tag.id) != -1" ng-repeat="tag in tags" ng-click="mark(tag)">{{tag.name}}</span>
 				</div>
             </div>
             <div class="col-md-6">

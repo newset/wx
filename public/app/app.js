@@ -32,6 +32,12 @@ angular.module('wx', ['ui.router', 'ngCookies', 'ngSanitize'])
 			},
 			tags : function(){
 				return $http.get(baseUrl + '/api/tags');
+			},
+			mark : function(weixin, tags){
+				return $http.post(baseUrl + '/api/weixins/mark', {
+					'id' : weixin,
+					'tags' : tags
+				});
 			}
 		};
 	}]);

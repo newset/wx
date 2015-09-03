@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\User;
 use App\Weixin;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class WeixinCtrl extends Controller
@@ -16,5 +17,10 @@ class WeixinCtrl extends Controller
 	public function getShow($id)
 	{
 		return Weixin::with(['articles', 'tags'])->find($id);
+	}
+
+	public function postMark(Request $req)
+	{	
+		return $req->input();
 	}
 }
