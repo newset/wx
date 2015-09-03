@@ -5,7 +5,7 @@
     <div class="card-body card-padding">
         <div class="listview">
             <div class="lv-body">
-                <a class="lv-item" href="" ng-repeat="item in weixins.data">
+                <a class="lv-item" href="" ng-repeat="item in weixins.data" ui-sref="weixins.show({ id: item.id })">
                     <div class="media">
                         <div class="pull-left">
                             <img class="lv-img-sm" ng-src="img/profile-pics/{{$index%8+1}}.jpg" alt="">

@@ -14,12 +14,29 @@ angular.module('wx')
 				}
 			})
 			.state('weixins', {
-				url : '/weixins/:page',
+				url : '/weixins',
+				abstract : true,
+				template : '<div ui-view></div>'
+			})
+			.state('weixins.index', {
+				url : '/:page',
 				templateUrl : 'templates/weixin.html',
 				controller : 'Weixin',
 				resolve : {
 					'Weixins' : ['Request', '$stateParams', function(Request, $stateParams){
 						return Request.weixins().success(function(res){
+							return res;
+						});
+					}]
+				}
+			})
+			.state('weixins.show', {
+				url : '/show/:id',
+				templateUrl : 'templates/weixin-one.html',
+				controller : 'ShowWeixin',
+				resolve : {
+					'Weixin' : ['Request', '$stateParams', function(Request, $stateParams){
+						return Request.getWeixin($stateParams.id).success(function(res){
 							return res;
 						});
 					}]
@@ -54,5 +71,9 @@ angular.module('wx')
 	.controller('Tags', ['$scope', 'Request', '$state', 'Tags', function ($scope, Request, $state, Tags) {
 		$scope.page = 1;
 		$scope.tags = Tags.data;
+
+	}])
+	.controller('ShowWeixin', ['$scope', 'Request', '$state', 'Weixin', function ($scope, Request, $state, Weixin) {
+		$scope.weixin = Weixin.data;
 
 	}]);

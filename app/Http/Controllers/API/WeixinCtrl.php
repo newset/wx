@@ -12,4 +12,9 @@ class WeixinCtrl extends Controller
 	{
 		return Weixin::paginate();
 	}
+
+	public function getShow($id)
+	{
+		return Weixin::with(['articles', 'tags'])->find($id);
+	}
 }
