@@ -175,14 +175,16 @@ angular.module('wx')
 		Tags.all().then(function(data){
 			// 显示已标注
 			$scope.cates = data;
-			$scope.tags = []
+			$scope.tags = [];
+			$scope.cateName = {};
 			data.map(function(v){
 				$scope.tags = $scope.tags.concat(v.tags);
+				$scope.cateName['cate'+v.id] = v.name;
 				return;
 			});
-			
+
 			$scope.newTags = $scope.tags.reduce(function(pre, val, index, obj){
-				var html = pre + val.id + '-'+val.name;
+				var html = pre + $scope.cateName['cate'+val.category_id] + '-'+val.name;
 				if (index != obj.length-1) {
 					html += '\n';
 				};
