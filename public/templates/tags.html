@@ -3,11 +3,12 @@
 		<h2>标签</h2>
 	</div>
 	<div class="card-body card-padding">
-		<div class="t-view b-0" ng-repeat="cate in cates">
+		<div class=" b-0" ng-repeat="cate in cates">
 			<h4>{{cate.name}}</h4>
 			<hr>
 			<div class="m-l-10">
-			    <span class="color bgm-{{cate.color}} m-r-10 m-b-10" ng-repeat="tag in cate.tags" >{{tag.name}}</span>
+			    <span class="color bgm-{{cate.color}} m-r-10 m-b-10 pull-left" ng-repeat="tag in cate.tags" >{{tag.name}}</span>
+                 <span class="clearfix"></span>
 			</div>
 		</div>
 		<hr>
