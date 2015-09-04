@@ -165,10 +165,16 @@ angular.module('wx')
 		$scope.import = function(){
 			Request.import($scope.newTags)
 				.success(function(res){
-
+					if (res.status) {
+						notify('导入成功', 'success');
+						$scope.newTags = '';
+						$scope.tags = res.tags;
+					}else{
+						notify('导入出错,包含已有标签', 'danger');
+					};
 				})
 				.error(function(){
-					
+					notify('导入出错,包含已有标签', 'danger');
 				});
 		}
 	}]);

@@ -5,8 +5,8 @@ namespace App\Http\Controllers\API;
 use DB;
 use App\User;
 use App\Tag;
+use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Database\QueryException;
 use App\Http\Controllers\Controller;
 
 class Tags extends Controller
@@ -30,8 +30,7 @@ class Tags extends Controller
 			$res = [];
 			try {
 				 DB::table('tags')->insert($insert);
-			} catch (Illuminate\Database\QueryException $e) {
-				var_dump($e->errorInfo);
+			} catch (Exception $e) {
 				$status = false; 
 			}
 			

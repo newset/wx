@@ -9,6 +9,19 @@ class Tag extends Model
     //
     protected $table = 'tags'; 
 
+    public static $autoValidate = true;
+
+    protected static $rules = [
+    	'name' => 'required|unique'
+    ];
+
+    public function validate($data){
+        // make a new validator object
+        $v = Validator::make($data, $this->rules);
+        // return the result
+        return $v->passes();
+    }
+
     public function weixin()
     {
         return $this->morphedByMany('App\Weixin', 'weixin_tag');
