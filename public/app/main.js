@@ -160,8 +160,7 @@ angular.module('wx')
 				notify('至少选择一个标签', 'danger');
 				return
 			};			
-			Request.mark($scope.weixin.id, data);
-
+			Request.mark($scope.weixin.id, data)
 			.success(function(res){
 				if (res.code == 0) {
 					$state.go('weixins.show', {'id' : res.next.id}, {'reload': true});
@@ -176,6 +175,19 @@ angular.module('wx')
 		Tags.all().then(function(data){
 			// 显示已标注
 			$scope.cates = data;
+			$scope.tags = []
+			data.map(function(v){
+				$scope.tags = $scope.tags.concat(v.tags);
+				return;
+			});
+			
+			$scope.newTags = $scope.tags.reduce(function(pre, val, index, obj){
+				var html = pre + val.id + '-'+val.name;
+				if (index != obj.length-1) {
+					html += '\n';
+				};
+				return html;
+			}, '');
 		});
 
 		// 导入文件
