@@ -29,7 +29,7 @@
                 <div class="input-group m-b-20">
                     <span class="input-group-addon"><i class="md md-person"></i></span>
                     <div class="fg-line">
-                        <input type="text" ng-model="login.email" name="email"class="form-control" placeholder="用户名">
+                        <input type="text" ng-model="login.name" name="name"class="form-control" placeholder="用户名">
                     </div>
                 </div>
                 
@@ -67,7 +67,7 @@
                 <div class="input-group m-b-20">
                     <span class="input-group-addon"><i class="md md-person"></i></span>
                     <div class="fg-line">
-                        <input type="text" ng-model="register.email" name="email" class="form-control" placeholder="用户名">
+                        <input type="text" ng-model="register.name" name="name" class="form-control" placeholder="用户名">
                     </div>
                 </div>
                 
