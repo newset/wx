@@ -12,7 +12,7 @@ use Session;
 class WeixinCtrl extends Controller {
 
 	public function getIndex() {
-		return Weixin::paginate();
+		return Weixin::whereNull('marking')->paginate();
 	}
 
 	public function getShow(Request $request, $id) {

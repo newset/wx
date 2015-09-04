@@ -44,7 +44,7 @@
             	<hr>
             	<div class="media" ng-repeat="article in weixin.articles">
                     <div class="media-body">
-                        <h4 class="media-heading">{{article.title}}</h4>
+                        <a ng-href="{{article.url}}" target="_blank"><h4 class="media-heading">{{article.title}}</h4></a>
                         <p ng-bind-html="article.shortContent168"></p>
                         <p>发布时间: {{article.pubtime}}</p>
                     </div>

@@ -108,9 +108,9 @@ angular.module('wx')
 		$scope.weixins = Weixins.data;
 
 		// 获取可以操作的公众号
-		Request.get_weixin().success(function(res){
-			$state.go('weixins.show', {id : res.id});
-		});
+		// Request.get_weixin().success(function(res){
+		// 	$state.go('weixins.show', {id : res.id});
+		// });
 	}])
 	.controller('Tags', ['$scope', 'Request', '$state', 'Tags', function ($scope, Request, $state, Tags) {
 		$scope.page = 1;
