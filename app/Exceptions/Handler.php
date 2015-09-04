@@ -49,7 +49,6 @@ class Handler extends ExceptionHandler
         }
 
         if ($e instanceof QueryException) {
-            
             $e = new Exception($e->getMessage());
         }
 

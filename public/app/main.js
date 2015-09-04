@@ -1,8 +1,12 @@
 angular.module('wx')
-	.run(['$rootScope', function ($rootScope) {
+	.run(['$rootScope', '$http', function ($rootScope, $http) {
 		$rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
 			
-		})
+		});
+
+		$http.get(baseUrl + '/api/dash/user').success(function(res){
+			$rootScope.currentLoginUser = res;
+		});
 	}])
 	.factory('Tags', ['$http', '$q', '$timeout', function ($http, $q, $timeout) {
 		var cache = [];
