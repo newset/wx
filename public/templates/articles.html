@@ -3,9 +3,9 @@
 		<h2>公众号文章</h2>
 	</div>
 	<div class="card-body card-padding">
-		<div class="media" ng-repeat="item in articles.data|limitTo:10">
+		<div class="media" ng-repeat="item in articles.data|limitTo:10" >
 	        <div class="media-body">
-	            <h4><a href="" class="h4 media-heading">{{item.title}}</a></h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+	            <h4><a ng-href="{{item.url}}" target="_blank" class="h4 media-heading">{{item.title}}</a></h4> 发布时间 : {{item.pubtime}}
 	        </div>
 	    </div>
 	</div>

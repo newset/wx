@@ -11,7 +11,7 @@ class Weixin extends Model
     // 关系
     public function articles()
     {
-        return $this->hasMany('App\Article');
+        return $this->hasMany('App\Article')->orderBy('pubtime', 'desc');
     }
 
     public function tags()

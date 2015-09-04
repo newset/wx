@@ -12,9 +12,4 @@ class Article extends Model
     {
         return $this->belongsTo('App\Weixin');
     }
-
-    public function tags()
-    {
-        return $this->morphToMany('App\Tag', 'article_tag');
-    }
 }
