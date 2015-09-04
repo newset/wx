@@ -702,7 +702,7 @@ $(document).ready(function(){
         //Add class to HTML. This is used to center align the logn box
         $('html').addClass('login-content');
         
-        $('body').on('click', '.login-navigation > li', function(){
+        $('body').on('click', '.login-navigation > li, .login-navigation-link > li', function(){
             var z = $(this).data('block');
             var t = $(this).closest('.lc-block');
             

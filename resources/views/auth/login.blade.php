@@ -49,12 +49,14 @@
                         保持登录
                     </label>
                 </div>
+                <div>
                 
-                <button type="button" ng-click="doLogin()" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></button>
-                
-                <ul class="login-navigation">
-                    <li data-block="#l-register" class="bgm-red">注册</li>
-                </ul>
+                    <button type="button" ng-click="doLogin()" class="m-t-20 pull-left btn btn-primary"><i class="md md-arrow-forward"></i> 登录</button>
+                    
+                    <ul class="login-navigation-link m-t-20 pull-left p-l-20">
+                        <li data-block="#l-register" class="btn btn-default">注册</li>
+                    </ul>
+                </div>
             </form>
         </div>
         
@@ -65,14 +67,7 @@
                 <div class="input-group m-b-20">
                     <span class="input-group-addon"><i class="md md-person"></i></span>
                     <div class="fg-line">
-                        <input type="text" ng-model="register.name" name="name" class="form-control" placeholder="用户名">
-                    </div>
-                </div>
-                
-                <div class="input-group m-b-20">
-                    <span class="input-group-addon"><i class="md md-mail"></i></span>
-                    <div class="fg-line">
-                        <input type="text" ng-model="register.email" name="email" class="form-control" placeholder="电子邮件">
+                        <input type="text" ng-model="register.email" name="email" class="form-control" placeholder="用户名">
                     </div>
                 </div>
                 
@@ -84,12 +79,13 @@
                 </div>
                 
                 <div class="clearfix"></div>
+                <div>
+                    <button type="button" ng-click="doRegister()" class="m-t-20 pull-left btn btn-login btn-success"><i class="md md-arrow-forward"></i> 注册</button>
+                    <ul class="login-navigation-link m-t-20 pull-left">
+                        <li data-block="#l-login" class="btn btn-default">登录</li>
+                    </ul>
+                </div>
                 
-                <button type="button" ng-click="doRegister()" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></button>
-                
-                <ul class="login-navigation">
-                    <li data-block="#l-login" class="bgm-green">登录</li>
-                </ul>
             </form>
         </div>
 
@@ -106,7 +102,7 @@
             
             <button type="button" ng-click="forget()" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></button>
             
-            <ul class="login-navigation">
+            <ul class="login-navigation-link">
                 <li data-block="#l-login" class="bgm-green">登录</li>
                 <li data-block="#l-register" class="bgm-red">注册</li>
             </ul>

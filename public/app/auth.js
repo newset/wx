@@ -22,7 +22,8 @@ angular.module('wx')
 				notify('注册成功，请登录', 'success');
 				location = baseUrl;
 			})
-			.error(function(){
+			.error(function(res){
+				if (res.email) {};
 				notify('注册失败', 'danger');
 			})
 		}

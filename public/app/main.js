@@ -155,7 +155,7 @@ angular.module('wx')
 			});
 		}
 	}])
-	.controller('TagsCtrl', ['$scope', 'Tags', function ($scope, Tags) {
+	.controller('TagsCtrl', ['$scope', 'Tags', 'Request', function ($scope, Tags, Request) {
 		Tags.all().then(function(data){
 			// 显示已标注
 			$scope.tags = data;
@@ -163,6 +163,12 @@ angular.module('wx')
 
 		// 导入文件
 		$scope.import = function(){
-			
+			Request.import($scope.newTags)
+				.success(function(res){
+
+				})
+				.error(function(){
+					
+				});
 		}
 	}]);

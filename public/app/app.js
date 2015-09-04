@@ -37,6 +37,9 @@ angular.module('wx', ['ui.router', 'ngCookies', 'ngSanitize'])
 			},
 			dash : function(){
 				return $http.get(baseUrl + '/api/dash');
+			},
+			import : function(data){
+				return $http.post(baseUrl + '/api/tags/import', {'tags' : data});
 			}
 		};
 	}])
