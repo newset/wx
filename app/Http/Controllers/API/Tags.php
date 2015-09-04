@@ -22,16 +22,13 @@ class Tags extends Controller
 		$status = true;
 		if ($req->input('tags')) {
 			$data = explode("\n", $req->input('tags'));
-			$insert = [];
+			
 			for ($i=0; $i < count($data); $i++) { 
-				array_push($insert, ['name'=>$data[$i]]);
-			}
-
-			$res = [];
-			try {
-				 DB::table('tags')->insert($insert);
-			} catch (Exception $e) {
-				$status = false; 
+				try {
+					DB::table('tags')->insert(['name'=>$data[$i]]);
+				} catch (Exception $e) {
+					$status = false; 
+				}
 			}
 			
 		}
