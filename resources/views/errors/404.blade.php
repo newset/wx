@@ -23,8 +23,8 @@
             <small>Nah.. it's 404</small>
             
             <footer>
-                <a href="index.html"><i class="md md-arrow-back"></i></a>
-                <a href="index.html"><i class="md md-home"></i></a>
+                <a href="{{url('/')}}"><i class="md md-arrow-back"></i></a>
+                <a href="{{url('/')}}"><i class="md md-home"></i></a>
             </footer>
         </div>
 

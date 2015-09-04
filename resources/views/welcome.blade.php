@@ -21,6 +21,12 @@
                 height: 100%;
             }
         </style>
+        <script type="text/javascript">
+            var _wx = {
+                'id' : '',
+                'name' : '' 
+            };
+        </script>
     </head>
     <body class="toggled sw-toggled">
         <header id="header">
@@ -78,16 +84,7 @@
                             
                             <ul class="main-menu">
                                 <li>
-                                    <a href="profile-about.html"><i class="md md-person"></i> View Profile</a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="md md-settings-input-antenna"></i> Privacy Settings</a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="md md-settings"></i> Settings</a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="md md-history"></i> Logout</a>
+                                    <a href="auth/logout"><i class="md md-history"></i>退出</a>
                                 </li>
                             </ul>
                         </div>
@@ -166,11 +163,6 @@
         <script src="vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
         <script src="vendors/sweet-alert/sweet-alert.min.js"></script>
         
-        <script src="js/flot-charts/curved-line-chart.js"></script>
-        <script src="js/flot-charts/line-chart.js"></script>
-        <script src="js/charts.js"></script>
-        
-        <script src="js/charts.js"></script>
         <script src="js/functions.js"></script>
         <script src="js/demo.js"></script>
 

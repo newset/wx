@@ -156,7 +156,9 @@
         <!-- Javascript Libraries -->
         <script src="{{asset('js/jquery-2.1.1.min.js')}}"></script>
         <script src="{{asset('js/bootstrap.min.js')}}"></script>
-        
+        <script src="{{asset('vendors/bootstrap-growl/bootstrap-growl.min.js')}}"></script>
+        <script src="{{asset('vendors/sweet-alert/sweet-alert.min.js')}}"></script>
+
         <script src="{{asset('vendors/waves/waves.min.js')}}"></script>
         <script src="{{asset('vendors/angular/angular.js')}}"></script>
         <script src="{{asset('vendors/angular-cookies/angular-cookies.js')}}"></script>
@@ -164,6 +166,7 @@
         <script src="{{asset('vendors/angular-sanitize/angular-sanitize.js')}}"></script>
         
         <script src="{{asset('js/functions.js')}}"></script>
+        <script src="{{asset('js/demo.js')}}"></script>
         <script src="{{asset('app/app.js')}}"></script>
         <script src="{{asset('app/auth.js')}}"></script>
         

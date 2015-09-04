@@ -13,13 +13,18 @@ angular.module('wx')
 
 		$scope.doLogin = function(){
 			Request.login($scope.login).success(function(res){
-				console.log(res);
+				location = baseUrl;
 			})
 		}
 
 		$scope.doRegister = function(){
-			Request.register($scope.register).success(function(res){
-				console.log(res);
+			Request.register($scope.register)
+			.success(function(res){
+				notify('注册成功，请登录', 'success');
+				location = baseUrl;
+			})
+			.error(function(){
+				notify('注册失败', 'danger');
 			})
 		}
 	}])
