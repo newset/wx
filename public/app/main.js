@@ -30,6 +30,11 @@ angular.module('wx')
 	}])
 	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 		$stateProvider
+			.state('home', {
+				url : '/',
+				templateUrl : 'templates/index.html',
+				controller : 'Home'
+			})
 			.state('articles', {
 				url : '/articles/:page',
 				templateUrl : 'templates/articles.html',

@@ -6,7 +6,6 @@ angular.module('wx')
 				controller : 'Auth',
 				templateUrl : '../templates/auth.html'
 			});
-
 		$urlRouterProvider.otherwise('/auth');
 	}])
 	.controller('Auth', ['$scope', 'Request', function ($scope, Request) {

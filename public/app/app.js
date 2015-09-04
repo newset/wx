@@ -1,12 +1,4 @@
 angular.module('wx', ['ui.router', 'ngCookies', 'ngSanitize'])
-	.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-		$stateProvider
-			.state('home', {
-				url : '/',
-				templateUrl : 'templates/index.html',
-				controller : 'Home'
-			});
-	}])
 	.run(['$rootScope', '$cookies', '$http', '$state', function ($rootScope, $cookies, $http, $state) {
         $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
         // $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
