@@ -33,8 +33,10 @@ class Data extends Controller
 		];
 	}
 
-	public function postTag(Request $req)
+	public function getUser(Request $req)
 	{
-		return $req->file();
+		return $req->user();
 	}
+
+
 }

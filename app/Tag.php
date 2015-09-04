@@ -15,6 +15,10 @@ class Tag extends Model
     	'name' => 'required|unique'
     ];
 
+    protected $guarded = ['id'];
+
+    public $timestamps = false;
+
     public function validate($data){
         // make a new validator object
         $v = Validator::make($data, $this->rules);

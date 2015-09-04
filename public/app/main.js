@@ -129,10 +129,18 @@ angular.module('wx')
 
 		Tags.all().then(function(data){
 			// 显示已标注
-			$scope.tags = data;
+			$scope.cates = data;
+			$scope.tags = data.map(function(v){
+				return v.tags;
+			});
 		})
 
 		$scope.mark = function(tag){
+			if($scope.tagMarked.length == 3){
+				notify('至多选择三个标签', 'danger');
+				return;
+			}
+
 			if($scope.tagMarkedIds.indexOf(tag.id) != -1) return;
 			$scope.tagMarked.push(tag);
 			$scope.tagMarkedIds.push(tag.id);
@@ -148,7 +156,12 @@ angular.module('wx')
 				return v.id;
 			});
 
-			Request.mark($scope.weixin.id, data)
+			if (data.length == 0) {
+				notify('至少选择一个标签', 'danger');
+				return
+			};			
+			Request.mark($scope.weixin.id, data);
+
 			.success(function(res){
 				if (res.code == 0) {
 					$state.go('weixins.show', {'id' : res.next.id}, {'reload': true});
@@ -162,7 +175,7 @@ angular.module('wx')
 	.controller('TagsCtrl', ['$scope', 'Tags', 'Request', function ($scope, Tags, Request) {
 		Tags.all().then(function(data){
 			// 显示已标注
-			$scope.tags = data;
+			$scope.cates = data;
 		});
 
 		// 导入文件
@@ -170,7 +183,7 @@ angular.module('wx')
 			Request.import($scope.newTags)
 				.success(function(res){
 					$scope.newTags = '';
-					$scope.tags = res.tags;
+					$scope.cates = res.tags;
 					if (res.status) {
 						notify('导入成功', 'success');
 					}else{

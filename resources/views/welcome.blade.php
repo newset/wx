@@ -20,6 +20,10 @@
             html,body{
                 height: 100%;
             }
+            .color{
+                padding: 5px 10px;
+                color: white;
+            }
         </style>
         <script type="text/javascript">
             var _wx = {
