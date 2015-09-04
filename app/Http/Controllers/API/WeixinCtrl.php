@@ -79,7 +79,7 @@ class WeixinCtrl extends Controller
 		}
 
 		DB::transaction(function() use(&$next){
-			$next = Weixin::with(['articles', 'tags'])->whereNull('marking')->first();
+			$next = Weixin::with(['articles', 'tags'])->whereNull('marking')->orderBy('priority', 'desc')->first();
 			$next->marking = 0;
 			$next->save();
 		});
