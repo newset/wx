@@ -175,9 +175,14 @@ angular.module('wx')
 		Tags.all().then(function(data){
 			// 显示已标注
 			$scope.cates = data;
+			
+			$scope.filter();
+		});
+
+		$scope.filter = function(){
 			$scope.tags = [];
 			$scope.cateName = {};
-			data.map(function(v){
+			$scope.cates.map(function(v){
 				$scope.tags = $scope.tags.concat(v.tags);
 				$scope.cateName['cate'+v.id] = v.name;
 				return;
@@ -190,7 +195,7 @@ angular.module('wx')
 				};
 				return html;
 			}, '');
-		});
+		}
 
 		// 导入文件
 		$scope.import = function(){
@@ -198,6 +203,8 @@ angular.module('wx')
 				.success(function(res){
 					$scope.newTags = '';
 					$scope.cates = res.tags;
+
+					$scope.filter();
 					if (res.status) {
 						notify('导入成功', 'success');
 					}else{
