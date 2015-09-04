@@ -163,15 +163,6 @@ angular.module('wx')
 
 		// 导入文件
 		$scope.import = function(){
-			alert($('.fileinput-filename').text());
-			$.ajaxFileUpload({
-				'url': 'api/dash/tag', 
-				fileElementId: 'tagFileInput',
-				dataType: "json", 
-				success: function(res) {
-	            },
-	            error: function(res) {
-            	}
-        	});
+			
 		}
 	}]);
