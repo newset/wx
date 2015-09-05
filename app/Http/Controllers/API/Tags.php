@@ -19,7 +19,7 @@ class Tags extends Controller
 
 	public function postImport(Request $req)
 	{
-		$color = ['red', 'pink', 'blue', 'purple', 'green', 'yellow'];
+		$color = ['red', 'pink', 'blue', 'purple', 'green', 'yellow', 'indigo', 'cyan', 'lime', 'brown', 'orange', 'gray'];
 
 		$data = [];
 		$status = true;
@@ -35,7 +35,7 @@ class Tags extends Controller
 					$cateId = $category->id;
 				}else{
 					$cateId = DB::table('categories')->insertGetId(
-					    ['name' => $cate, 'color' => $color[rand(0, 5)]]
+					    ['name' => $cate, 'color' => $color[rand(0, count($color)-1)]]
 					);
 				}
 
