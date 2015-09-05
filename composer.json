@@ -14,7 +14,8 @@
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
         "way/generators": "*",
-        "doctrine/dbal" : "*"
+        "doctrine/dbal" : "*",
+        "barryvdh/laravel-debugbar": "^2.0"
     },
     "autoload": {
         "classmap": [
@@ -51,7 +52,10 @@
         "preferred-install": "dist"
     },
     "repositories": [
-        {"type": "composer", "url": "http://packagist.phpcomposer.com"},
+        {
+            "type": "composer", 
+            "url": "http://packagist.phpcomposer.com"
+        },
         {"packagist": false}
     ]
 }

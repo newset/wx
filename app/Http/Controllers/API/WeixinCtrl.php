@@ -11,8 +11,12 @@ use Session;
 
 class WeixinCtrl extends Controller {
 
-	public function getIndex() {
-		return Weixin::whereNull('marking')->paginate();
+	public function getIndex(Request $req) {
+		$user = $req->user();
+		if ($user->admin) {
+			return Weixin::orderBy('priority', 'desc')->paginate();
+		}
+		return Weixin::whereNull('marking')->orderBy('priority', 'desc')->paginate();
 	}
 
 	public function getShow(Request $request, $id) {
