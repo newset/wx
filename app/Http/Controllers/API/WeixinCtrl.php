@@ -14,13 +14,13 @@ class WeixinCtrl extends Controller {
 	public function getIndex(Request $req) {
 		$user = $req->user();
 		if ($user->admin) {
-			return Weixin::orderBy('priority', 'desc')->paginate();
+			return Weixin::orderBy('priority', 'desc')->paginate(10);
 		}
-		
+
 		return Weixin::whereNull('marking')
 			->orWhere(['id'=>$user->last_wx, 'marking'=>0])
 			->orderBy('priority', 'desc')
-			->paginate();
+			->paginate(10);
 	}
 
 	public function getShow(Request $request, $id) {

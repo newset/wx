@@ -45,7 +45,7 @@ angular.module('wx')
 				controller : 'Article',
 				resolve : {
 					'Articles' : ['Request', '$stateParams', function(Request, $stateParams){
-						return Request.articles().success(function(res){
+						return Request.articles(1).success(function(res){
 							return res;
 						});
 					}]
@@ -62,7 +62,7 @@ angular.module('wx')
 				controller : 'Weixin',
 				resolve : {
 					'Weixins' : ['Request', '$stateParams', function(Request, $stateParams){
-						return Request.weixins().success(function(res){
+						return Request.weixins(1).success(function(res){
 							return res;
 						});
 					}]
@@ -102,15 +102,24 @@ angular.module('wx')
 		$scope.articles = Articles.data;
 		$scope.page = 1;
 
+		$scope.pageChanged = function(){
+			Request.articles($scope.page).success(function(res){
+				$scope.articles = res;
+			});
+		}
 	}])
 	.controller('Weixin', ['$scope', 'Request', '$state', 'Weixins', function ($scope, Request, $state, Weixins) {
 		$scope.page = 1;
 		$scope.weixins = Weixins.data;
-
 		// 获取可以操作的公众号
 		// Request.get_weixin().success(function(res){
 		// 	$state.go('weixins.show', {id : res.id});
 		// });
+		$scope.pageChanged = function(){
+			Request.weixins($scope.page).success(function(res){
+				$scope.weixins = res;
+			});
+		}
 	}])
 	.controller('Tags', ['$scope', 'Request', '$state', 'Tags', function ($scope, Request, $state, Tags) {
 		$scope.page = 1;

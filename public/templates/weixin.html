@@ -23,7 +23,8 @@
                     </div>
                 </a>
             </div>
-            <a class="lv-footer" href="">View All</a>
+            <hr>
+            <pagination total-items="weixins.total" ng-model="page" ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="weixins.per_page" max-size="10"></pagination>
         </div>
     </div>
 </div>

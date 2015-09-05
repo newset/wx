@@ -10,6 +10,6 @@ class ArticleCtrl extends Controller
 {
 	public function getIndex()
 	{
-		return Article::paginate();
+		return Article::paginate(15);
 	}
 }

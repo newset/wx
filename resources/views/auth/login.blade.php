@@ -160,6 +160,8 @@
         <script src="{{asset('vendors/angular-cookies/angular-cookies.js')}}"></script>
         <script src="{{asset('vendors/angular-ui-router/release/angular-ui-router.js')}}"></script>
         <script src="{{asset('vendors/angular-sanitize/angular-sanitize.js')}}"></script>
+        <script src="{{asset('vendors/angular-bootstrap/ui-bootstrap.js')}}"></script>
+        <script src="{{asset('vendors/angular-bootstrap/ui-bootstrap-tpls.js')}}"></script>
         
         <script src="{{asset('js/functions.js')}}"></script>
         <script src="{{asset('js/demo.js')}}"></script>

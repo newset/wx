@@ -1,9 +1,10 @@
-angular.module('wx', ['ui.router', 'ngCookies', 'ngSanitize'])
+angular.module('wx', ['ui.router', 'ngCookies', 'ngSanitize', 'ui.bootstrap'])
 	.run(['$rootScope', '$cookies', '$http', '$state', function ($rootScope, $cookies, $http, $state) {
         $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
         // $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
         $rootScope.$state = $state;
+        $rootScope.baseUrl = baseUrl;
 	}])
 	.factory('Request', ['$http', '$q', function ($http, $q) {
 		var baseUrl = window.baseUrl;
@@ -14,11 +15,11 @@ angular.module('wx', ['ui.router', 'ngCookies', 'ngSanitize'])
 			register : function(data){
 				return $http.post(baseUrl + '/auth/register', data);
 			},
-			articles : function(){
-				return $http.get(baseUrl + '/api/articles');
+			articles : function(page){
+				return $http.get(baseUrl + '/api/articles', {'params' : {'page' : page}});
 			},
-			weixins : function(){
-				return $http.get(baseUrl + '/api/weixins');
+			weixins : function(page){
+				return $http.get(baseUrl + '/api/weixins', {'params' : {'page' : page}});
 			},
 			getWeixin : function(id){
 				return $http.get(baseUrl + '/api/weixins/show/'+ id);
