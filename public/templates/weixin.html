@@ -14,6 +14,12 @@
                             <div class="lv-title">{{item.name}}</div>
                             <small class="lv-small" ng-bind-html="item.intro"></small>
                         </div>
+                        <div class="btn btn-success p-absolute wx-done btn-xs" ng-if="item.marking==1">
+                            <i class="md md-done"></i>
+                        </div>
+                        <div class="btn btn-warning p-absolute wx-done btn-xs" ng-if="item.marking==0">
+                            <i class="md md-create"></i>
+                        </div>
                     </div>
                 </a>
             </div>

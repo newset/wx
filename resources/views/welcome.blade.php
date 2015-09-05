@@ -24,6 +24,12 @@
                 padding: 5px 10px;
                 color: white;
             }
+            .wx-done{
+                right: 10px;
+                top: 10px;
+                border-radius: 16px;
+                padding-left: 6px;
+            }
         </style>
         <script type="text/javascript">
             var _wx = {
