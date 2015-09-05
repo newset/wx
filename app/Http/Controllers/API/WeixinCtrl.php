@@ -16,7 +16,11 @@ class WeixinCtrl extends Controller {
 		if ($user->admin) {
 			return Weixin::orderBy('priority', 'desc')->paginate();
 		}
-		return Weixin::whereNull('marking')->orderBy('priority', 'desc')->paginate();
+		
+		return Weixin::whereNull('marking')
+			->orWhere(['id'=>$user->last_wx, 'marking'=>0])
+			->orderBy('priority', 'desc')
+			->paginate();
 	}
 
 	public function getShow(Request $request, $id) {
