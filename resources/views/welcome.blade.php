@@ -161,12 +161,6 @@
         <script src="js/jquery-2.1.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         
-        <script src="vendors/flot/jquery.flot.min.js"></script>
-        <script src="vendors/flot/jquery.flot.resize.min.js"></script>
-        <script src="vendors/flot/plugins/curvedLines.js"></script>
-        <script src="vendors/sparklines/jquery.sparkline.min.js"></script>
-        <script src="vendors/easypiechart/jquery.easypiechart.min.js"></script>
-        
         <script src="vendors/auto-size/jquery.autosize.min.js"></script>
         <script src="vendors/nicescroll/jquery.nicescroll.min.js"></script>
         <script src="vendors/waves/waves.min.js"></script>
