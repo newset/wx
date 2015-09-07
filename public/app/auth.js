@@ -3,8 +3,7 @@ angular.module('wx')
 		$stateProvider
 			.state('auth', {
 				url : '/auth',
-				controller : 'Auth',
-				templateUrl : '../templates/auth.html'
+				controller : 'Auth'
 			});
 		$urlRouterProvider.otherwise('/auth');
 	}])
