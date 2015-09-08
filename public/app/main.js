@@ -36,12 +36,12 @@ angular.module('wx')
 		$stateProvider
 			.state('home', {
 				url : '/',
-				templateUrl : 'templates/index.html',
+				templateUrl : 'templates/index.html?'+new Date().valueOf(),
 				controller : 'Home'
 			})
 			.state('articles', {
 				url : '/articles/:page',
-				templateUrl : 'templates/articles.html',
+				templateUrl : 'templates/articles.html?'+new Date().valueOf(),
 				controller : 'Article',
 				resolve : {
 					'Articles' : ['Request', '$stateParams', function(Request, $stateParams){
@@ -58,7 +58,7 @@ angular.module('wx')
 			})
 			.state('weixins.index', {
 				url : '/:page',
-				templateUrl : 'templates/weixin.html',
+				templateUrl : 'templates/weixin.html?'+new Date().valueOf(),
 				controller : 'Weixin',
 				resolve : {
 					'Weixins' : ['Request', '$stateParams', function(Request, $stateParams){
@@ -70,7 +70,7 @@ angular.module('wx')
 			})
 			.state('weixins.show', {
 				url : '/show/:id',
-				templateUrl : 'templates/weixin-one.html',
+				templateUrl : 'templates/weixin-one.html?'+new Date().valueOf(),
 				controller : 'ShowWeixin',
 				resolve : {
 					'Weixin' : ['Request', '$stateParams', '$q', '$state', function(Request, $stateParams, $q, $state){
@@ -92,7 +92,7 @@ angular.module('wx')
 			})
 			.state('tags', {
 				url : '/tags/:page',
-				templateUrl : 'templates/tags.html',
+				templateUrl : 'templates/tags.html?'+new Date().valueOf(),
 				controller : 'TagsCtrl'
 			});
 
