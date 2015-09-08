@@ -28,4 +28,12 @@ $(document).ready(function(){
         // notify('Welcome back Mallinda Hollaway', 'danger');
     } 
     window.notify = notify;
+
+    if($(window).width() < 500){
+        $('#sidebar a').on('click', function(){
+            $('#sidebar').toggleClass('toggled');
+        });
+        console.log($(window).height());
+        $('#sidebar').css({'height' : $(window).height()-65+'px'})
+    }
 });
