@@ -30,7 +30,7 @@ $(document).ready(function(){
     window.notify = notify;
 
     if($(window).width() < 700){
-        $('#sidebar a').on('click', function(){
+        $('#sidebar .main-menu a').on('click', function(){
             $('#sidebar').toggleClass('toggled');
         });
         console.log($(window).height());
