@@ -29,11 +29,12 @@ $(document).ready(function(){
     } 
     window.notify = notify;
 
-    if($(window).width() < 500){
+    if($(window).width() < 700){
         $('#sidebar a').on('click', function(){
             $('#sidebar').toggleClass('toggled');
         });
         console.log($(window).height());
-        $('#sidebar').css({'height' : $(window).height()-65+'px'})
     }
+
+    $('#sidebar').css({'height' : $(window).height()-65+'px'});
 });
