@@ -11,7 +11,7 @@
     </div>
     <div class="card-body card-padding">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-sm-12">
                 <div class="media">
                     <div class="pull-left">
                         <a href="#">
@@ -38,9 +38,11 @@
                             <span class="clearfix"></span>
                         </div>
                     </div>
+                    <div class="clearfix"></div>
 				</div>
+                <div class="clearfix"></div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-sm-12">
             	<h4>最近文章</h4>
             	<hr>
             	<div class="media" ng-repeat="article in weixin.articles">
@@ -50,7 +52,9 @@
                         <p>发布时间: {{article.pubtime}}</p>
                     </div>
                 </div>
+                <div class="clearfix"></div>
             </div>
+            <div class="clearfix"></div>
         </div>
     </div>
 </div>
