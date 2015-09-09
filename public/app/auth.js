@@ -3,16 +3,19 @@ angular.module('wx')
 		$stateProvider
 			.state('auth', {
 				url : '/auth',
-				controller : 'Auth'
+				controller : 'Auth',
+				templateUrl : 'template/login.html'
 			});
 		$urlRouterProvider.otherwise('/auth');
 	}])
 	.controller('Auth', ['$scope', 'Request', function ($scope, Request) {
 
-		$scope.doLogin = function(){
-			Request.login($scope.login).success(function(res){
+		$scope.userData = {};
+		
+		$scope.doLogin = function(login){
+			Request.login(login).success(function(res){
 				location = baseUrl;
-			})
+			});
 		}
 
 		$scope.doRegister = function(){

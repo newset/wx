@@ -21,22 +21,22 @@
         </script>
     </head>
     
-    <body class="login-content" ng-controller="Auth">
+    <body class="login-content">
+        <div ui-view></div>
+        <script type="text-template" id='template/login.html'>
          <!-- Login -->
-        <div class="lc-block toggled" id="l-login">
-            <form method="POST" action="{{url('/auth/login')}}">
-                {!! csrf_field() !!}
+            <div class="lc-block toggled" id="l-login">
                 <div class="input-group m-b-20">
                     <span class="input-group-addon"><i class="md md-person"></i></span>
                     <div class="fg-line">
-                        <input type="text" ng-model="login.name" name="name"class="form-control" placeholder="用户名">
+                        <input type="text" ng-model="userData.name" name="name" class="form-control" placeholder="用户名">
                     </div>
                 </div>
                 
                 <div class="input-group m-b-20">
                     <span class="input-group-addon"><i class="md md-accessibility"></i></span>
                     <div class="fg-line">
-                        <input type="password" ng-model="login.password" name="password" class="form-control" placeholder="密码">
+                        <input type="password" ng-model="userData.password" name="password" class="form-control" placeholder="密码">
                     </div>
                 </div>
                 
@@ -51,19 +51,18 @@
                 </div>
                 <div>
                 
-                    <button type="button" ng-click="doLogin()" class="m-t-20 pull-left btn btn-primary"><i class="md md-arrow-forward"></i> 登录</button>
+                    <button type="button" ng-click="doLogin(userData)" class="m-t-20 pull-left btn btn-primary">
+                        <i class="md md-arrow-forward"></i> 登录
+                    <tton>
                     
                     <ul class="login-navigation-link m-t-20 pull-left p-l-20">
-                        <li data-block="#l-register" class="btn btn-default">注册</li>
+                        <li data-block="#l-register" class="btn btn-default">注册<>
                     </ul>
                 </div>
-            </form>
-        </div>
+            </div>
         
-        <!-- Register -->
-        <div class="lc-block" id="l-register">
-            <form method="POST" action="{{url('/auth/register')}}">
-                {!! csrf_field() !!}
+            <!-- Register -->
+            <div class="lc-block" id="l-register">
                 <div class="input-group m-b-20">
                     <span class="input-group-addon"><i class="md md-person"></i></span>
                     <div class="fg-line">
@@ -80,34 +79,15 @@
                 
                 <div class="clearfix"></div>
                 <div>
-                    <button type="button" ng-click="doRegister()" class="m-t-20 pull-left btn btn-login btn-success"><i class="md md-arrow-forward"></i> 注册</button>
+                    <button type="button" ng-click="doRegister()" class="m-t-20 pull-left btn btn-login btn-success"><i class="md md-arrow-forward"></i> 注册<tton>
                     <ul class="login-navigation-link m-t-20 pull-left">
-                        <li data-block="#l-login" class="btn btn-default">登录</li>
+                        <li data-block="#l-login" class="btn btn-default">登录<>
                     </ul>
                 </div>
                 
-            </form>
-        </div>
-
-        <!-- Forgot Password -->
-        <div class="lc-block" id="l-forget-password">
-            <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu risus. Curabitur commodo lorem fringilla enim feugiat commodo sed ac lacus.</p>
-            
-            <div class="input-group m-b-20">
-                <span class="input-group-addon"><i class="md md-email"></i></span>
-                <div class="fg-line">
-                    <input type="text" class="form-control" placeholder="Email Address">
-                </div>
             </div>
-            
-            <button type="button" ng-click="forget()" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></button>
-            
-            <ul class="login-navigation-link">
-                <li data-block="#l-login" class="bgm-green">登录</li>
-                <li data-block="#l-register" class="bgm-red">注册</li>
-            </ul>
-        </div>
-        
+        </script>
+
         <!-- Older IE warning message -->
         <!--[if lt IE 9]>
             <div class="ie-warning">
