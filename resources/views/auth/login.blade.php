@@ -23,7 +23,7 @@
     
     <body class="login-content">
         <div ui-view></div>
-        <script type="text-template" id='template/login.html'>
+        <script type="text/ng-template" id='template/login.html'>
          <!-- Login -->
             <div class="lc-block toggled" id="l-login">
                 <div class="input-group m-b-20">
@@ -53,10 +53,10 @@
                 
                     <button type="button" ng-click="doLogin(userData)" class="m-t-20 pull-left btn btn-primary">
                         <i class="md md-arrow-forward"></i> 登录
-                    <tton>
+                    </button>
                     
                     <ul class="login-navigation-link m-t-20 pull-left p-l-20">
-                        <li data-block="#l-register" class="btn btn-default">注册<>
+                        <li data-block="#l-register" class="btn btn-default">注册</li>
                     </ul>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                 <div>
                     <button type="button" ng-click="doRegister()" class="m-t-20 pull-left btn btn-login btn-success"><i class="md md-arrow-forward"></i> 注册<tton>
                     <ul class="login-navigation-link m-t-20 pull-left">
-                        <li data-block="#l-login" class="btn btn-default">登录<>
+                        <li data-block="#l-login" class="btn btn-default">登录</li>
                     </ul>
                 </div>
                 
