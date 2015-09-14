@@ -79,7 +79,9 @@
                 
                 <div class="clearfix"></div>
                 <div>
-                    <button type="button" ng-click="doRegister()" class="m-t-20 pull-left btn btn-login btn-success"><i class="md md-arrow-forward"></i> 注册<tton>
+                    <button type="button" ng-click="doRegister()" class="m-t-20 pull-left btn btn-login btn-success">
+                        <i class="md md-arrow-forward"></i> 注册
+                    </button>
                     <ul class="login-navigation-link m-t-20 pull-left">
                         <li data-block="#l-login" class="btn btn-default">登录</li>
                     </ul>
